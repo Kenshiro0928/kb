@@ -1,0 +1,4 @@
+raptor:
+  depth: 2
+  chunk_size: 1200
+  overlap: 200

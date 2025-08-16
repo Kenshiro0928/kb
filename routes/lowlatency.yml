@@ -1,0 +1,8 @@
+id: lowlatency
+preset: Low-latency
+retriever: { n: 20, hybrid: [bm25, dense], hyde: false }
+reranker:  { k: 0, late_interaction: false }
+composer:  { raptor_depth: 0 }
+compressor:{ max_ratio: 8.0, typical: 5.0 }
+verifier:  { ais_required: true, promote_if_confidence_lt: 0.65 }
+citations: { required: false }

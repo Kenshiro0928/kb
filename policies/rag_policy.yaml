@@ -1,0 +1,30 @@
+policy:
+  version: 1.0.1
+  default: Balanced
+  thresholds:
+    confidence_route: 0.72
+    low_latency_demote: 0.65
+    recency_days: 90
+  routes:
+    Fresh:      when: ["time_sensitive == true"]
+    HighFid:    when: ["risk == 'high' or (multi_hop == true and confidence < 0.70)"]
+    LongDoc:    when: ["doc_pages > 30 or est_tokens > 50000"]
+    LowLatency: when: ["task in ['FAQ','triage'] and risk == 'low' and time_sensitive == false"]
+  escalate_on:
+    ragas_window_mean_lt: 0.75
+    ais_fail_rate_gt: 0.10
+    retrieval_at_100_lt: 0.90
+
+slo:
+  quality:
+    ragas: ">= 0.80"
+    ais_pass_rate: ">= 0.90"
+    unsupported_claim_rate: "<= 0.02"
+  cost:
+    avg_input_tokens: "<= 4000"
+    rerank_apply_rate: "<= 40%"
+  freshness:
+    fresh_trigger_search: "100%"
+    fresh_recent_sources_min: ">= 2 within 90d"
+  availability:
+    kv_streaming: "enabled"

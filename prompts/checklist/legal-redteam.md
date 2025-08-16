@@ -1,0 +1,3 @@
+- Verify claims
+- Check citations
+- Flag risk

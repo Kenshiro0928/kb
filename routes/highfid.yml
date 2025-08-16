@@ -1,0 +1,8 @@
+id: highfid
+preset: High-fidelity
+retriever: { n: 80, hybrid: [bm25, dense, late], hyde: false }
+reranker:  { k: 10, late_interaction: true, time_weight_lambda: 0.2 }
+composer:  { raptor_depth: 2 }
+compressor:{ max_ratio: 2.0 }
+verifier:  { cove_passes: 2, ais_required: true, hold_on_unsupported: true }
+citations: { required: true }
