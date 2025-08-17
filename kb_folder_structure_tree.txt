@@ -1,0 +1,11 @@
+kb/
+  corpus/
+  routes/
+  policies/
+  indices/{lexical,dense,late}
+  evals/{sets,runs}
+  verifications/{cove_logs,ais_logs}
+  personas/
+  workflows/
+  scripts/
+  ...
